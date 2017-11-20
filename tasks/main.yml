@@ -10,7 +10,6 @@
     pip:
       name: "{{ dev_pip }}"
       virtualenv: "{{ env_dir }}"
-
       state: latest
 
   - name: install the gems for dev

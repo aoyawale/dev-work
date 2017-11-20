@@ -1,2 +1,8 @@
 ---
 # defaults file for dev-work
+dev_rpm:
+dev_pip:
+env_dir:
+dev_gem:
+gem_repo:
+
