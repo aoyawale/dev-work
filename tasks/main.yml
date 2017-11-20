@@ -1,0 +1,21 @@
+---
+# tasks file for dev-work
+
+  - name: install all the dev rpms
+    yum:
+      name: "{{ dev_rpm }}"
+      state: latest
+
+  - name: install the pip dev
+    pip:
+      name: "{{ dev_pip }}"
+      virtualenv: "{{ env_dir }}"
+
+      state: latest
+
+  - name: install the gems for dev
+    gem:
+      name: "{{ dev_gem }}"
+      state: latest
+      repository: "{{ gem_repo }}"
+
