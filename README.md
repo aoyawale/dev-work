@@ -9,27 +9,34 @@ Requirements
 
 Role Variables
 --------------
-
-
-Dependencies
-------------
 ```
-dev_rpm:
-dev_pip:
-env_dir:
-dev_gem:
-gem_repo:
+dev_work:
+   rpms:
+      - python-pip
+      - vim-common
+      - ruby
+      - python3
+  ruby_gems:
+      - chef
+      - rbenv
+  virtualenvs:
+  - name: venv1
+    path: /root/venv1
+    packages:
+      - ansible
+      - requests
+      - json
+  - name: venv2
+    path: /home/mike/venv2
+    packages:
+       - fabric
+       - json
+```
 
-dictionary
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
 
 License
 -------
