@@ -20,6 +20,8 @@ env_dir:
 dev_gem:
 gem_repo:
 
+dictionary
+
 Example Playbook
 ----------------
 
