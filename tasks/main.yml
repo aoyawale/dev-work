@@ -1,6 +1,21 @@
 ---
 # tasks file for dev-work
 
+  - name: Get current OSP-related Bash env vars
+    shell: "env | grep OS_"
+    register: osp_vars
+    changed_when: false
+
+  - name: Print current OSP-related Bash env vars (for debugging, if required)
+    debug:
+      var: osp_vars.stdout_lines
+    changed_when: false
+
+  - name: Ensuring authentication can occur with current OSP-related Bash env vars
+    os_auth:
+      auth_type: password
+    changed_when: false
+
   - name: install all the dev rpms
     yum:
       name: "{{ dev_rpm }}"
