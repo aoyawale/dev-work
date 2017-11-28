@@ -20,17 +20,17 @@ dev_work:
       - chef
       - rbenv
   virtualenvs:
-  - name: venv1
-    path: /root/venv1
-    packages:
-      - ansible
-      - requests
-      - json
-  - name: venv2
-    path: /home/mike/venv2
-    packages:
-       - fabric
-       - json
+  - venv1:
+      path: /root/venv1
+      packages:
+        - ansible
+        - requests
+        - json
+  - venv2
+      path: /home/mike/venv2
+      packages:
+         - fabric
+         - json
 ```
 
 
@@ -46,4 +46,3 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).

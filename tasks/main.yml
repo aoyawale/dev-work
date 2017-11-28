@@ -18,25 +18,22 @@
 
   - name: install all the dev rpms
     yum:
-      name: "{{ dev_rpm }}"
+      name: "{{ item }}"
       state: latest
-    with_subelements:
-      - "{{ dev_work.rpms }}"
+    with_items: "{{ dev_work.rpms }}"
 
 
   - name: install the pip dev
     pip:
-      name: "{{ dev_pip }}"
-      virtualenv: "{{ env_dir }}"
+      name: "{{ item.1 }}"
+      virtualenv: "{{ item.0.path }}"
       state: latest
-    with_subelements:
+    with_subelements: 
       - "{{ dev_work.virtualenvs }}"
+      - packages 
 
   - name: install the gems for dev
     gem:
-      name: "{{ dev_gem }}"
+      name: "{{ item }}"
       state: latest
-      repository: "{{ gem_repo }}"
-    with_subelements:
-      - "{{ dev_work.ruby_gems }}"
-
+    with_items: "{{ dev_work.gem }}"
