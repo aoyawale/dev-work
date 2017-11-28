@@ -9,13 +9,17 @@ Requirements
 
 Role Variables
 --------------
+group_vars
+
 ```
 dev_work:
    rpms:
-      - python-pip
-      - vim-common
-      - ruby
-      - python3
+     - python-pip
+     - vim-common
+     - ruby
+     - python3
+   pip:
+     - virtualenv
   ruby_gems:
       - chef
       - rbenv
@@ -25,12 +29,10 @@ dev_work:
       packages:
         - ansible
         - requests
-        - json
   - venv2
       path: /home/mike/venv2
       packages:
          - fabric
-         - json
 ```
 
 

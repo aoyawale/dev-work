@@ -23,17 +23,25 @@
     with_items: "{{ dev_work.rpms }}"
 
 
-  - name: install the pip dev
-    pip:
-      name: "{{ item.1 }}"
-      virtualenv: "{{ item.0.path }}"
-      state: latest
-    with_subelements: 
-      - "{{ dev_work.virtualenvs }}"
-      - packages 
+  - name: install pip requirements and the dev environment
+    block:
+      - name: install virtualenv with pip
+        pip:
+          name: "{{ item }}"
+          state: latest
+        with_items:
+          - "{{ dev_work.pip }}"
+      - name: create the virtualenv and packages      
+        pip:
+          name: "{{ item.1 }}"
+          virtualenv: "{{ item.0.path }}"
+          state: latest
+        with_subelements: 
+          - "{{ dev_work.virtualenvs }}"
+          - packages 
 
   - name: install the gems for dev
     gem:
       name: "{{ item }}"
       state: latest
-    with_items: "{{ dev_work.gem }}"
+    with_items: "{{ dev_work.ruby_gems }}"
